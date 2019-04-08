@@ -24,6 +24,10 @@ body {
     line-height: 40px;
     border-bottom: 1px solid #ccc;
     font-weight: bold;
+    span {
+        position: fixed;
+        right: 0;
+    }
 }
 
 .con {

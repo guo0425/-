@@ -10,6 +10,7 @@ define(["mui", 'BScroll'], function(mui, BScroll) {
     var BS = new BScroll('.mainbody', {
         probeType: 2
     })
+    let total;
 
     function init() {
         mui.init()
@@ -18,6 +19,7 @@ define(["mui", 'BScroll'], function(mui, BScroll) {
     }
 
     function getdata(skip, limit) {
+        console.log(skip, limit)
         mui.ajax('/getdata', {
             data: {
                 skip: skip,
@@ -26,6 +28,7 @@ define(["mui", 'BScroll'], function(mui, BScroll) {
             success(rs) {
                 const sdata = rs.data;
                 render(sdata)
+                total = rs.total;
             }
         })
     }
@@ -84,15 +87,18 @@ define(["mui", 'BScroll'], function(mui, BScroll) {
         })
         BS.on('scrollEnd', function() {
             if (flag) {
-
                 page++;
-                getdata(page, 10);
-                pull.innerHTML = '释放刷新。。。'
-                return
-            } else {
-                pull.innerHTML = '没有更多数据';
-            }
+                console.log(page)
+                if (page <= total) {
+                    getdata(page, 10);
+                    pull.innerHTML = '释放刷新。。。'
+                } else {
+                    pull.innerHTML = '没有更多数据';
+                    return;
+                }
 
+
+            }
         })
     }
     init()

@@ -8,22 +8,26 @@ router.get('/', function(req, res, next) {
 //查找数据
 router.get('/getdata', function(req, res, next) {
     const { skip, limit } = req.query;
-    mongo.find('test', 'yuekao', function(result) {
-        if (!result) {
-            res.send({ code: 0, msg: 'error' })
-        } else {
-            res.send({ code: 1, data: result })
-        }
-    }, {
-        skip: skip - 1,
-        limit: limit
+    mongo.find('test', 'yuekao', function(rs) {
+        let total = Math.ceil(rs.length / limit);
+        mongo.find('test', 'yuekao', function(result) {
+            if (!result) {
+                res.send({ code: 0, msg: 'error' })
+            } else {
+                res.send({ code: 1, data: result, total: total })
+            }
+        }, {
+            skip: skip * 1 - 1,
+            limit: limit * 1
+        })
     })
+
 });
 //添加数据
-router.post('/adddata', function(req, res, next) {
+router.get('/adddata', function(req, res, next) {
     //  const { data } = req.body;
     console.log(req.body)
-    mongo.insert('test', 'yuekao', req.body, function(result) {
+    mongo.insert('test', 'yuekao', req.query, function(result) {
         if (!result) {
             res.send({ code: 0, msg: 'error' })
         } else {

@@ -3,6 +3,7 @@ require.config({
     paths: {
         "mui": 'libs/mui.min',
         "BScroll": 'libs/BScroll',
-        'index': 'page/index'
+        'index': 'page/index',
+        "detail": 'page/detail'
     }
 })

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/detail.css">
+    <link rel="stylesheet" href="css/mui.css">
+</head>
+
+<body>
+    <div class="web">
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+            <h1 class="mui-title">创建商品</h1>
+        </header>
+        <div class="main">
+            <p class="top"><input type="text" placeholder="商品类型/花型号"></p>
+            <div class="con">
+                <h3>商品图片</h3>
+                <ul>
+                    <li class="img"><img src="img/pic1.png" alt=""></li>
+                </ul>
+            </div>
+            <div class="con">
+                <ul class="mui-table-view">
+                    <li class="mui-table-view-cell">
+                        <a href="#popover" id="openPopover" class="mui-btn mui-btn-primary mui-btn-block mui-navigate-right">品类标签</a>
+
+
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <a href="#popover" id="openPopover" class="mui-btn mui-btn-primary mui-btn-block mui-navigate-right">成分</a>
+
+
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <a href="#popover" id="openPopover" class="mui-btn mui-btn-primary mui-btn-block mui-navigate-right">幅宽</a>
+
+
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <a href="#popover" id="openPopover" class="mui-btn mui-btn-primary mui-btn-block mui-navigate-right">地区</a>
+
+
+                    </li>
+                </ul>
+            </div>
+            <p class="num"><input type="text" placeholder="描述"></p>
+            <p class="color"><input type="text" placeholder="大小：请填写数字"></p>
+            <h4>备注</h4>
+            <p class="place"><input type="text" placeholder="备注"></p>
+            <div class="type">
+                <span class="active" id="0">现货</span>
+                <span id="1">供应</span>
+            </div>
+            <div id="popover" class="mui-popover">
+                <ul class="mui-table-view">
+                    <li class="mui-table-view-cell"><a href="#">Item1</a></li>
+                    <li class="mui-table-view-cell"><a href="#">Item2</a></li>
+                    <li class="mui-table-view-cell"><a href="#">Item3</a></li>
+                </ul>
+            </div>
+        </div>
+        <button class="btn">发布商品</button>
+    </div>
+    <script src="js/libs/require.js"></script>
+    <script>
+        require(['js/main'], () => {
+            require(['detail'])
+        })
+    </script>
+</body>
+
+</html>
